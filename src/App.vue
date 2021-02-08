@@ -1,32 +1,50 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="header-div">
+      <div class="home-btn">
+        Home Button
+      </div>
+      <div class="profile-div">
+        Name
+      </div>
     </div>
-    <router-view/>
+    <div class="body-div">
+      <router-view/>
+    </div>
   </div>
 </template>
+<script>
+  import { mapActions } from 'vuex'
 
+  export default {
+    methods: {
+      ...mapActions([
+              'fetchJsonData'
+      ])
+    },
+    mounted() {
+      this.fetchJsonData()
+      console.log('kek')
+    }
+  }
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  .header-div {
+    padding: 20px;
+    height: 40px;
+    background-color: #414f52;
+    box-shadow: 0 0 2px -4px #000000;
 
-#nav {
-  padding: 30px;
-}
+    color: white;
+    font-family: "Lucida Console", sans-serif;
+    font-size: 22px;
+    font-weight: 900;
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .body-div {
+    background-color: #b0bcbd;
+  }
 </style>
