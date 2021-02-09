@@ -234,4 +234,27 @@ export default {
     border-style: solid;
     border-width: 1px;
   }
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50px;
+    width: 80px;
+    cursor: pointer;
+    background-color: azure;
+    border-radius: 4px;
+    border-color: #414f52;
+    border-style: solid;
+    border-width: 1px;
+    transition: all 500ms ease;
+  }
+  .btn:hover {
+    background-color: #414f52;
+    color: white;
+    border-radius: 4px;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+  }
 </style>
