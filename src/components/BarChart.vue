@@ -15,7 +15,10 @@
             }
         },
         mounted() {
-            this.renderChart(this.chartData, this.options)
+            // да да я знаю)))
+            setTimeout(() => {
+                this.renderChart(this.chartData, this.options)
+            }, 100)
         }
     }
 </script>

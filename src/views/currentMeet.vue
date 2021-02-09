@@ -44,10 +44,7 @@ export default {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-                display: false
-            }
+            maintainAspectRatio: false
         }
     }),
     methods: {
@@ -61,7 +58,6 @@ export default {
         ])
     },
     mounted() {
-        this.fetchJsonData()
         this.meetingId = this.$route.params.id
         this.meetingData = this.getFileJson.meetings[this.meetingId]
         // console.log(this.meetingData.attendance)

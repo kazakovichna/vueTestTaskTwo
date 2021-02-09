@@ -1,18 +1,113 @@
 <template>
   <div class="home">
     <div class="info-div">
-      <div class="name-div">
-        <p style="opacity: 0.7">name:  </p><p>{{this.fileJson.user.name}}</p>
-        <p>surname:  </p><p>{{this.fileJson.user.surname}}</p>
+      <div class="inf-div">
+        <div style="width: 100%">
+          <div class="name-div"
+               v-if="editShow !== 'name'"
+          >
+            <p>name:  {{fileJson.user.name}}</p>
+            <p class="material-icons"
+               style="cursor: pointer"
+               @click="(editShow = 'name')"
+            >create</p>
+          </div>
+          <div class="edit-name-div"
+               v-else-if="editShow === 'name'"
+          >
+            <input type="text"
+                   class="edit-input"
+                   placeholder="Enter name"
+                   v-model="fileJson.user.name">
+            <div class="btn"
+                 @click="applyData('name')"
+            >
+              <p>Apply</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 100%">
+          <div class="name-div"
+               v-if="editShow !== 'surname'"
+          >
+            <p>surname:  {{fileJson.user.surname}}</p>
+            <p class="material-icons"
+               style="cursor: pointer"
+               @click="(editShow = 'surname')"
+            >create</p>
+          </div>
+          <div class="edit-name-div"
+               v-else-if="editShow === 'surname'"
+          >
+            <input type="text"
+                   class="edit-input"
+                   placeholder="Enter surname"
+                   v-model="fileJson.user.surname">
+            <div class="btn"
+                 @click="applyData('surname')"
+            >
+              <p>Apply</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="name-div">
-        <p>email:  </p><p>{{this.fileJson.user.email}}</p>
-        <p>token:  </p><p>{{this.fileJson.user.token}}</p>
+      <div class="inf-div">
+
+        <div style="width: 100%">
+          <div class="name-div"
+               v-if="editShow !== 'email'"
+          >
+            <p>email:  {{fileJson.user.email}}</p>
+            <p class="material-icons"
+               style="cursor: pointer"
+               @click="(editShow = 'email')"
+            >create</p>
+          </div>
+          <div class="edit-name-div"
+               v-else-if="editShow === 'email'"
+          >
+            <input type="text"
+                   class="edit-input"
+                   placeholder="Enter email"
+                   v-model="fileJson.user.email">
+            <div class="btn"
+                 @click="applyData('email')"
+            >
+              <p>Apply</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 100%">
+          <div class="name-div"
+               v-if="editShow !== 'token'"
+          >
+            <p>token:  {{fileJson.user.token}}</p>
+            <p class="material-icons"
+               style="cursor: pointer"
+               @click="(editShow = 'token')"
+            >create</p>
+          </div>
+          <div class="edit-name-div"
+               v-else-if="editShow === 'token'"
+          >
+            <input type="text"
+                   class="edit-input"
+                   placeholder="Enter token"
+                   v-model="fileJson.user.token">
+            <div class="btn"
+                 @click="applyData('token')"
+            >
+              <p>Apply</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="meeting-div">
       <div class="go_to_meeting waves-effect waves-light"
-           @click="goToList()"
+           @click="$router.push('/meetingList')"
       >
         <p>Meeting List</p>
       </div>
@@ -21,21 +116,29 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
   data: () => ({
-    fileJson: {}
+    fileJson: {},
+    editShow: ''
   }),
   computed: {
     ...mapGetters([
-            'getFileJson'
+      'getFileJson'
     ])
   },
   methods: {
-    goToList() {
-      this.$router.push('/meetingList')
+    ...mapActions([
+            'applyDataAct'
+    ]),
+    editData(id) {
+      this.editShow = id
+    },
+    applyData() {
+      this.editShow = ''
+      this.applyDataAct(this.fileJson)
     }
   },
   mounted() {
@@ -57,7 +160,7 @@ export default {
     justify-content: space-between;
     flex-direction: row;
   }
-  .name-div {
+  .inf-div {
     word-break: break-word;
     margin: 30px;
     width: 50%;
@@ -75,8 +178,11 @@ export default {
     align-items: flex-start;
     flex-direction: column;
   }
-  .name-div p {
-
+  .name-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   .meeting-div {
     padding: 20px;
@@ -105,12 +211,27 @@ export default {
 
     background-color: #414f52;
     color: white;
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
+
     box-shadow: none;
   }
   .go_to_meeting p {
     margin: 0!important;
+  }
+  .edit-name-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .edit-input {
+    height: 50px;
+    outline: none;
+
+    font-size: 18px;
+    color: #414f52;
+
+    border-radius: 4px;
+    border-color: #414f52;
+    border-style: solid;
+    border-width: 1px;
   }
 </style>

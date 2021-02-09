@@ -10,6 +10,9 @@
   "dependencies": {
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "fs": "0.0.1-security",
+    "icons": "^1.0.0",
+    "material": "^0.4.3",
     "materialize-css": "^1.0.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^11.0.0",
@@ -25,6 +28,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "browserify-fs": "^1.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",

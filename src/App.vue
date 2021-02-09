@@ -1,11 +1,18 @@
 <template>
   <div id="app">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <div class="header-div">
-      <div class="home-btn">
-        Home Button
+      <div class="home-btn"
+           style="cursor: pointer"
+           @click="$router.push('/')"
+      >
+        <span class="material-icons">
+          home
+        </span>
       </div>
       <div class="profile-div">
-        Name
+        {{ $store.getters.getFileJson.user.name }}
       </div>
     </div>
     <div class="body-div">
@@ -24,7 +31,6 @@
     },
     mounted() {
       this.fetchJsonData()
-      console.log('kek')
     }
   }
 </script>

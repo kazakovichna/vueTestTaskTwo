@@ -6,7 +6,7 @@
         <div class="meeting-items">
             <div class="meeting-item"
                  v-for="item in this.meetingMas"
-                 :key="item.name"
+                 :key="item.meeting_name"
                  @click="goToCurrentMeeting(item)"
             >
                 <div class="meeting-item-name">

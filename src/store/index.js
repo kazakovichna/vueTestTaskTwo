@@ -13,24 +13,27 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async fetchJsonData({commit}) {
-      // Here is Gonna be APi request but we are local today
-      /////////////
-      /* \{^_^}/ */
-      /////////////
-      let fileJson
+    fetchJsonData({commit}) {
 
-      const p = new Promise(function (resolve) {
+      let fileJson = {}
+      let p = new Promise((resolve) => {
         fileJson = require('../assets/data/test_json_2dlab.json')
-        setTimeout(() => {
-          console.log('setTimeOut Done!')
-        }, 500)
         resolve()
       })
 
       p.then(() => {
         commit('setFileJson', fileJson)
       })
+    },
+    applyDataAct({ commit }, file) {
+      console.log(file)
+      console.log('Sorry but we cant edit a file without server\n I`ve spent three hours to get it')
+      /*fs.writeFile('../assets/data/test_json_2dlab.json', file, (error) => {
+        if (error) { throw error}
+        this.fetchJsonData()
+        console.log('okay')
+      })*/
+      commit( )
     }
   },
   getters: {
