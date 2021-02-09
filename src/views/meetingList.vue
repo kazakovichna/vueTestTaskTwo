@@ -76,6 +76,7 @@ export default {
         align-items: center;
     }
     .meeting-item {
+        cursor: pointer;
         border-radius: 2px;
         padding: 20px;
         background-color: #f0f8ff;
